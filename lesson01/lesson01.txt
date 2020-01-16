@@ -1,0 +1,41 @@
+public class Main{
+	public static void main(String[] args) {
+	}
+	
+	double example(int a, int b, int c, int d){  //задача 1
+	    double x = a * (b + (c / d));
+	    return x;
+	}
+	
+	public boolean distance(int a, int b){       //задача 2
+	    if(((a + b)>=10) && ((a + b)<=20)){
+	        return true;
+	    }else{
+	        return false;
+	    }
+	}
+	
+	public static void positiveOrNegative(int a){ //задача 3
+	    if (a >= 0){
+	        System.out.println("Положительное");
+	    }else{
+	        System.out.println("Отрицательное");
+	    }
+	}
+	
+	public static void greeting(String name){     // задача 4
+	    System.out.println("Привет, " + name +" !");
+	}
+	
+	public static void year(int year){            // задача 5
+	    if(year%400 == 0){
+            System.out.println("Год " + year + " - високосный");
+        }else if(year%100 == 0){
+            System.out.println("Год " + year + " - не високосный");
+        }else if(year%4 == 0){
+            System.out.println("Год " + year + " - високосный");    
+        }else{
+            System.out.println("Год " + year + " - не високосный");
+        }
+	}
+}
