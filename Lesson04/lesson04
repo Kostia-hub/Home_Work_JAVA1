@@ -1,0 +1,142 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
+public class Employee{
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyy");
+    int CURRENT_YEAR = Integer.parseInt(dateFormat.format( new Date() ));
+
+    private String name;
+    private String position;
+    private int telephone;
+    private int salary;
+    private int birthYear;
+    private static int count = 1;  // счетчик для порядковых номеров
+    public int identifier;
+
+    public Employee(int age) {
+        this.birthYear = CURRENT_YEAR - age;
+    }
+
+    public Employee( String name, String position, int telephone, int salary, int age) {
+        this(age);
+        this.name = name;
+        this.position = position;
+        this.telephone = telephone;
+        this.salary = salary;
+        this.identifier = count++; //Присваиваем порядковый номер сотруднику
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public int getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(int telephone) {
+        this.telephone = telephone;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public int getAge() {
+        return CURRENT_YEAR - birthYear;
+    }
+
+    public int getIdentifer() {
+        return identifier;
+    }
+
+    public static void main(String[] args) {
+
+        Employee employee1 = new Employee("Аксёнов Вольдемар Степанович", "директор", 822443190, 60000, 50); //Employee
+        Employee employee2 = new Employee("Филатова Неонила Вадимовна", "бухгалтер", 521943190, 40000, 40); //Employee
+        Employee employee3 = new Employee("Шестаков Альберт Агафонович", "бригадир", 56284140, 35000, 30); //Employee
+        Employee employee4 = new Employee("Мельникова Фия Вячеславовна", "дизайнер", 89952740, 30000, 25); //Employee
+        Employee employee5 = new Employee("Одинцов Тихон Агафонович", "работник(!)", 5239740, 15000, 48); //Employee
+
+        System.out.println(employee1.getIdentifer());  //Задание 8: К аждому сотруднику присваивался личный уникальный идентификационный порядковый номер
+
+        System.out.println(employee1.getName()); //Задание 4: Вывести при помощи методов из пункта 3 ФИО и должность.
+
+        System.out.println(employee1.getPosition());
+
+        System.out.printf("Данные о сотруднике %s:  %s,\nДолжность: %s,\nТелефон: %s, Зарплата: %s, Возраст: %d\n", employee1.getIdentifer(), employee1.getName(), employee1.getPosition(),
+                employee1.getTelephone(), employee1.getSalary(), employee1.getAge());
+
+        Employee [] arr = { employee1, employee2, employee3, employee4, employee5 };  //создали массив из 5 сотрудников
+
+        getArrayInfo(arr);
+
+        getSalaryInfo(arr);
+
+        System.out.println(middleAgeInfo(arr));   //Задание 7: Средние арифметические возраста
+
+        System.out.println(middleSalaryInfo(arr));//Задание 7: Средние арифметические зарплаты
+
+    }
+    public static void getArrayInfo(Employee [] res) { //Задание 5:С помощью цикла вывести информацию только о сотрудниках старше 40 лет;
+        for(int i = 0; i < res.length; i++) {
+            if((res[i].getAge())<40){
+                System.out.println("№: " + res[i].getIdentifer()  + ", " + res[i].getName()  + ", " + res[i].getPosition()  + " " +
+                        res[i].getTelephone()  + " " + res[i].getSalary()  + " " + res[i].getAge() + " ");
+            }
+        }
+    }
+
+    public static void getSalaryInfo(Employee [] res) { //Задание 6: Создать метод, повышающий зарплату всем сотрудникам старше 45 лет на 5000.
+        for(int i = 0; i < res.length; i++) {
+            if((res[i].getAge())>45){
+                System.out.println(res[i].getSalary());
+                res[i].setSalary(res[i].getSalary() +5000);
+                System.out.println(res[i].getSalary());
+            }
+        }
+    }
+
+    public static int middleAgeInfo(Employee [] res) { //Задание 7: Средние арифметические возраста
+        int summ = 0;
+        for(int i = 0; i < res.length; i++) {
+            summ += res[i].getAge();
+        }
+        return (summ/res.length);
+    }
+
+    public static int middleSalaryInfo(Employee [] res) { //Задание 7: Средние арифметические зарплаты
+        int summ = 0;
+        for(int i = 0; i < res.length; i++) {
+            summ += res[i].getSalary();
+        }
+        return (summ/res.length);
+    }
+}
+
+/*********************************************************************************************************
+ Создать класс "Сотрудник" с полями: ФИО, должность, телефон, зарплата, возраст;
+ Конструктор класса должен заполнять эти поля при создании объекта;
+ Внутри класса «Сотрудник» написать методы, которые возвращают значение каждого поля;
+ Вывести при помощи методов из пункта 3 ФИО и должность.
+ Создать массив из 5 сотрудников. С помощью цикла вывести информацию только о сотрудниках старше 40 лет;
+ * Создать метод, повышающий зарплату всем сотрудникам старше 45 лет на 5000.
+ * Средние арифметические возраста и зарплаты
+ *** Продумать конструктор таким образом, чтобы при создании каждому сотруднику присваивался личный уникальный идентификационный порядковый номер*/
