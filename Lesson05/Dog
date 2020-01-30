@@ -1,0 +1,14 @@
+import java.util.Random;
+
+public class Dog extends Animal{
+    private int lengthSwim;
+    public Random random = new Random();
+
+    public Dog(String name) {
+        super(name);
+        this.type = "Собака";
+        this.lengthRun = random.nextInt(500) + 500;
+        this.lengthJump = Math.random()*0.5 + 0.1;
+        this.lengthSwim = random.nextInt(10) + 15;
+    }
+}

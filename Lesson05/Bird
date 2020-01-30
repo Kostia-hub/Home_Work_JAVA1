@@ -1,0 +1,14 @@
+import java.util.Random;
+
+public class Bird extends Animal{
+    private int lengthSwim;
+    public Random random = new Random();
+
+    public Bird (String name) {
+        super(name);
+        this.type = "Птичка";
+        this.lengthRun = random.nextInt(5) + 5;
+        this.lengthJump = Math.random()*0.2 + 0.05;
+        this.lengthSwim = 0;
+    }
+}
