@@ -11,4 +11,8 @@ public class Cat extends Animal{
         this.lengthJump = Math.random()*2.0 + 0.1;
         this.lengthSwim = 0;
     }
+    @Override
+    public void swim(double h){
+        System.out.println(this.type + " " + name + " не умеет плавать!");
+    }
 }

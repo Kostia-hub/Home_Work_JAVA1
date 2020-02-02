@@ -26,14 +26,11 @@ public abstract class Animal{
     }
 
     public void swim(double h) {
-        if (this.lengthSwim == 0) {
-            System.out.println(this.type + " " + name + " не умеет плавать!");
-        } else {
-            if (h < this.lengthSwim) {
+			 if (h < this.lengthSwim) {
                 System.out.println(this.type + " " + name + " плывет!");
             } else {
                 System.out.println(this.type + " " + name + " устала и ушла спать");
             }
-        }
+        
     }
 }
