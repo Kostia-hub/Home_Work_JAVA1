@@ -1,0 +1,18 @@
+import java.util.Random;
+
+public class Cat extends Animal{
+    private int lengthSwim;
+    public Random random = new Random();
+
+    public Cat (String name) {
+        super(name);
+        this.type = "Котэ";
+        this.lengthRun = random.nextInt(200) + 180;
+        this.lengthJump = Math.random()*2.0 + 0.1;
+        this.lengthSwim = 0;
+    }
+    @Override
+    public void swim(double h){
+        System.out.println(this.type + " " + name + " не умеет плавать!");
+    }
+}
